@@ -1,0 +1,38 @@
+{
+  "name": "httpclient",
+  "version": "1.0.0",
+  "description": "A simple wrapper around axio http client",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint --fix --ext .js, .ts",
+    "build": "tsc"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "author": "Bipin Radhakrishnan",
+  "license": "ISC",
+  "dependencies": {
+    "@types/qs": "^6.9.7",
+    "axios": "^0.24.0",
+    "qs": "^6.10.1"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.16.4",
+    "@babel/preset-typescript": "^7.16.0",
+    "@types/jest": "^27.0.3",
+    "@types/node": "^16.11.10",
+    "@typescript-eslint/eslint-plugin": "^5.4.0",
+    "@typescript-eslint/parser": "^5.4.0",
+    "eslint": "^8.3.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-tsdoc": "^0.2.14",
+    "jest": "^27.3.1",
+    "json-server": "^0.17.0",
+    "node": "^17.1.0",
+    "typedoc": "^0.22.10"
+  }
+}

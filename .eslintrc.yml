@@ -1,0 +1,29 @@
+env:
+  browser: true
+  es2021: true
+extends:
+  - airbnb-base
+  - prettier
+parser: "@typescript-eslint/parser"
+parserOptions:
+  ecmaVersion: 13
+  sourceType: module
+plugins:
+  - "@typescript-eslint"
+  - "eslint-plugin-tsdoc"
+  - "prettier"
+rules:
+  {
+    tsdoc/syntax: "warn",
+    import/extensions: "off",
+    no-unused-vars: "off",
+    no-extend-native: "off",
+    no-shadow: "off",
+    prettier/prettier: ["error"],
+    class-methods-use-this: "off",
+    no-useless-constructor: "off"
+  }
+settings:
+  import/resolver:
+    node:
+      extensions: [".js", ".jsx", ".ts", ".tsx"]

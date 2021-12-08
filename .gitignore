@@ -1,0 +1,5 @@
+node_modules
+.fake
+.ionide
+build
+.DS_Store
