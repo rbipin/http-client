@@ -5,6 +5,9 @@ import InvalidOAuthConfigurationException from '../exceptions/invalid-oauth-conf
 import HttpClient from './http-client';
 import { HttpConfiguration } from '../models/http-client-config';
 
+/**
+ * This is an OAuth HttpClient, based on the credentials passed as OAuthConfig this will request for a bearer token and send that with each request
+ */
 export default class OAuthHttpClient extends HttpClient {
   constructor(httpConfig: HttpConfiguration) {
     if (httpConfig?.authConfig == null) {

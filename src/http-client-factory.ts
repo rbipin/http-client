@@ -32,7 +32,7 @@ export default class HttpClientFactory {
   /**
    * Return the HttpClient object
    * @param httpConfig - HttpConfiguration
-   * @returns The httpClient
+   * @returns The httpClient, based on the AuthConfiguration it returns either a basic HttpClient, a basic auth HttpClient or a OAuthHttpClient
    */
   public createClient(
     httpConfig?: HttpConfiguration | null | undefined,

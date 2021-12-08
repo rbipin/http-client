@@ -6,7 +6,7 @@ import axios, {
 } from 'axios';
 import Header from '../models/header';
 import { HttpConfiguration } from '../models/http-client-config';
-import { HttpResponse } from '../models/httpResponse';
+import { HttpResponse } from '../models/http-response';
 
 /**
  * Abstract class for HttpClient

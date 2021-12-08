@@ -5,6 +5,9 @@ import HttpClient from './http-client';
 import { HttpConfiguration } from '../models/http-client-config';
 import InvalidBasicAuthConfigurationException from '../exceptions/invalid-basic-auth-config';
 
+/**
+ * This is an basic auth http client that added ClientId and ClientSecret to the request headers
+ */
 export default class BasicAuthHttpClient extends HttpClient {
   constructor(httpConfig: HttpConfiguration) {
     super(httpConfig);
