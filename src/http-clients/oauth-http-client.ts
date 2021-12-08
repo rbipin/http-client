@@ -1,7 +1,7 @@
 import OAuthConfig from '../auth/oauth-config';
 import OAuthTokenManager from '../auth/oauth-token-manager';
 import { isNullOrEmpty } from '../common/utilities';
-import InvalidOAuthConfigurationException from '../exceptions/invalid-oauth-config';
+import InvalidOAuthConfigException from '../exceptions/invalid-oauth-config';
 import HttpClient from './http-client';
 import { HttpConfiguration } from '../models/http-client-config';
 
@@ -11,9 +11,7 @@ import { HttpConfiguration } from '../models/http-client-config';
 export default class OAuthHttpClient extends HttpClient {
   constructor(httpConfig: HttpConfiguration) {
     if (httpConfig?.authConfig == null) {
-      throw new InvalidOAuthConfigurationException(
-        'OAuth configuration is missing',
-      );
+      throw new InvalidOAuthConfigException('OAuth configuration is missing');
     }
     super(httpConfig);
     const oAuthConfig: OAuthConfig = httpConfig.authConfig as OAuthConfig;
@@ -52,9 +50,7 @@ export default class OAuthHttpClient extends HttpClient {
       !isNullOrEmpty(oauthConfig.clientSecret);
 
     if (!isValid) {
-      throw new InvalidOAuthConfigurationException(
-        'OAuth Configuration is invalid',
-      );
+      throw new InvalidOAuthConfigException('OAuth Configuration is invalid');
     }
   }
 }

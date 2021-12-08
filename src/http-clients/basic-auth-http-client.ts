@@ -1,9 +1,8 @@
 import BasicAuthConfig from '../auth/basic-auth-config';
 import { isNullOrEmpty } from '../common/utilities';
-import InvalidOAuthConfigurationException from '../exceptions/invalid-oauth-config';
+import InvalidBasicAuthConfigException from '../exceptions/invalid-oauth-config';
 import HttpClient from './http-client';
 import { HttpConfiguration } from '../models/http-client-config';
-import InvalidBasicAuthConfigurationException from '../exceptions/invalid-basic-auth-config';
 
 /**
  * This is an basic auth http client that added ClientId and ClientSecret to the request headers
@@ -12,7 +11,7 @@ export default class BasicAuthHttpClient extends HttpClient {
   constructor(httpConfig: HttpConfiguration) {
     super(httpConfig);
     if (httpConfig?.authConfig == null) {
-      throw new InvalidBasicAuthConfigurationException(
+      throw new InvalidBasicAuthConfigException(
         'Basic Auth configuration cannot be null or empty',
       );
     }
@@ -48,7 +47,7 @@ export default class BasicAuthHttpClient extends HttpClient {
       !isNullOrEmpty(basicAuthConfig.clientId) &&
       !isNullOrEmpty(basicAuthConfig.clientSecret);
     if (!isValid) {
-      throw new InvalidOAuthConfigurationException(
+      throw new InvalidBasicAuthConfigException(
         'OAuth Configuration is invalid',
       );
     }
