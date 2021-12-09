@@ -10,4 +10,4 @@ export * from './models/header';
 export { default as BasicAuthConfig } from './auth/basic-auth-config';
 export { default as OAuthConfig } from './auth/oauth-config';
 export { default as InvalidBasicAuthConfigException } from './exceptions/invalid-basic-auth-config';
-export * from './exceptions/invalid-oauth-config';
+export { default as InvalidOAuthConfigException } from './exceptions/invalid-oauth-config';

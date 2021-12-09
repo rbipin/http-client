@@ -4,7 +4,7 @@ import axios, {
   AxiosRequestHeaders,
   AxiosResponse,
 } from 'axios';
-import Header from '../models/header';
+import { Header } from '../models/header';
 import { HttpConfiguration } from '../models/http-client-config';
 import { HttpResponse } from '../models/http-response';
 

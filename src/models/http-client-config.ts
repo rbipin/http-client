@@ -1,5 +1,5 @@
 import AuthConfig from '../auth/auth-config';
-import Header from './header';
+import { Header } from './header';
 
 /**
  * This interface is to define Http configuration that needs to be passed to create the client

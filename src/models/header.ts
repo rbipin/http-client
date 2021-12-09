@@ -1,6 +1,6 @@
 /**
  * This interface is for the request headers
  */
-export default interface Header {
+export interface Header {
   [key: string]: string;
 }
