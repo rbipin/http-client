@@ -1,4 +1,4 @@
-import HttpStatusCode from '../types/http-error-codes';
+import HttpStatusCode from '../types/http-status-codes';
 /**
  * This interface is HttpResponse<T>
  */

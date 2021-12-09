@@ -2,12 +2,13 @@
 
 // eslint-disable-next-line import/no-extraneous-dependencies
 import 'jest';
-import { HttpResponse } from '../models/httpResponse';
-import HttpClientFactory from '../http-client-factory';
-import { HttpConfiguration } from '../models/http-client-config';
-import HttpStatusCode from '../types/http-error-codes';
-import BasicAuthConfig from '../auth/basic-auth-config';
-import Header from '../models/header';
+import {
+  HttpClientFactory,
+  HttpResponse,
+  HttpConfiguration,
+  HttpStatusCode,
+  OAuthConfig,
+} from '../index';
 
 describe('Get - Data', () => {
   interface Data {
