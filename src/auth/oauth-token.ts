@@ -1,7 +1,7 @@
 export default class OAuthToken {
   token: string;
 
-  tokenExpiryTime: Date | null = null;
+  tokenExpiryTime?: Date = undefined;
 
   constructor(token: string, tokenExpiryMilliSeconds: number) {
     this.token = token;

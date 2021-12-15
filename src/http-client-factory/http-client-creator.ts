@@ -9,6 +9,6 @@ export default abstract class HttpClientCreator {
    * Create HttpClient
    */
   public abstract createClient(
-    httpConfig: HttpConfiguration | null | undefined,
+    httpConfig?: HttpConfiguration
   ): HttpClient;
 }

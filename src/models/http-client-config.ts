@@ -6,11 +6,13 @@ import { Header } from './header';
  */
 export interface HttpConfiguration {
   /** baseUrl for the HttpClient */
-  baseUrl: string;
+  baseUrl?: string;
   /** headers */
-  headers?: Header | null | undefined;
+  headers?: Header;
   /** Authentication configuration, BasicAuth, OAuthConfig */
-  authConfig: AuthConfig | null | undefined;
+  authConfig?: AuthConfig;
   /** timeout (in ms), default is 10000 */
-  timeout?: number | null | undefined;
+  timeout?: number;
+  /** Certificate */
+  certificate?: string;
 }

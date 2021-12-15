@@ -4,8 +4,7 @@ import { TokenResponse } from './token-response';
 import OAuthConfig from './oauth-config';
 import BasicHttpClient from '../http-clients/basic-http-client';
 import { isArrayNullOrEmpty } from '../common/utilities';
-import HttpClientFactory from '../http-client-factory';
-import { HttpConfiguration } from '..';
+import { HttpConfiguration } from '../models/http-client-config';
 
 /** @internal */
 export default class OAuthTokenManager {
@@ -13,6 +12,7 @@ export default class OAuthTokenManager {
 
   public static async issueToken(
     authConfig: OAuthConfig,
+    httpsCertificate?: string,
   ): Promise<string | null> {
     let tokenItem: OAuthToken | undefined | null = null;
     const key = this.buildOAuthConfigKey(authConfig);
@@ -22,7 +22,7 @@ export default class OAuthTokenManager {
         return tokenItem.token;
       }
     }
-    return this.updateToken(authConfig);
+    return this.updateToken(authConfig, httpsCertificate );
   }
 
   private static buildOAuthConfigKey(authConfig: OAuthConfig): string {
@@ -31,6 +31,7 @@ export default class OAuthTokenManager {
 
   private static async updateToken(
     authConfig: OAuthConfig,
+    httpsCertificate?: string,
   ): Promise<string | null> {
     const newToken = await this.requestNewOAuthToken(authConfig);
     if (newToken == null) {
@@ -47,6 +48,7 @@ export default class OAuthTokenManager {
 
   private static async requestNewOAuthToken(
     authConfig: OAuthConfig,
+    httpsCertificate?: string,
   ): Promise<TokenResponse | null | undefined> {
     if (authConfig == null) {
       return null;
@@ -69,7 +71,14 @@ export default class OAuthTokenManager {
     const headers = {
       'content-type': 'application/x-www-form-urlencoded',
     };
-    const httpClient = new BasicHttpClient();
+    let httpsConfig: HttpConfiguration | undefined;
+    if (httpsCertificate) {
+      httpsConfig = {
+        certificate: httpsCertificate
+      };
+    }
+  
+    const httpClient = new BasicHttpClient(httpsConfig);
     const response = await httpClient?.post<TokenResponse>(
       authConfig.tokenUrl,
       urlEncodedDataString,

@@ -4,7 +4,7 @@ import BasicHttpClientCreator from './http-client-factory/basic-http-client-crea
 import HttpClient from './http-clients/http-client';
 import HttpClientCreator from './http-client-factory/http-client-creator';
 import { HttpConfiguration } from './models/http-client-config';
-import Authentication from './types/authentication';
+import Authentication from './types/authentication-type';
 
 /**
  * This is the HttpClientFactory
@@ -35,7 +35,7 @@ export default class HttpClientFactory {
    * @returns The httpClient, based on the AuthConfiguration it returns either a basic HttpClient, a basic auth HttpClient or a OAuthHttpClient
    */
   public createClient(
-    httpConfig?: HttpConfiguration | null | undefined,
+    httpConfig?: HttpConfiguration,
   ): HttpClient | null | undefined {
     const { authConfig } = httpConfig ?? {};
     let httpClientCreator: HttpClientCreator | null | undefined = null;

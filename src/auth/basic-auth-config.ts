@@ -1,4 +1,4 @@
-import Authentication from '../types/authentication';
+import AuthenticationType from '../types/authentication-type';
 import AuthConfig from './auth-config';
 /**
  * Basic Auth Config
@@ -13,6 +13,6 @@ import AuthConfig from './auth-config';
  */
 export default class BasicAuthConfig extends AuthConfig {
   constructor(id: string, secret: string) {
-    super(Authentication.Basic, id, secret);
+    super(AuthenticationType.Basic, id, secret);
   }
 }

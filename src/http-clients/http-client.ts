@@ -7,6 +7,8 @@ import axios, {
 import { Header } from '../models/header';
 import { HttpConfiguration } from '../models/http-client-config';
 import { HttpResponse } from '../models/http-response';
+// import * as https from 'https';
+import { isNullOrEmpty } from '../common/utilities';
 
 /**
  * Abstract class for HttpClient
@@ -14,19 +16,27 @@ import { HttpResponse } from '../models/http-response';
 export default abstract class HttpClient {
   instance: AxiosInstance;
 
-  readonly baseConfig: AxiosRequestConfig;
+  readonly baseConfig?: AxiosRequestConfig = undefined;
 
-  constructor(baseRequestConfig: HttpConfiguration | null | undefined) {
-    const headers = baseRequestConfig?.headers ?? {};
+  constructor(baseRequestConfig?: HttpConfiguration) {
+    if (baseRequestConfig == null) {
+      this.instance = axios.create();
+      return;
+    }
+    // const certifcate = baseRequestConfig.certificate ?? '';
+    // const httpsAgent = isNullOrEmpty(certifcate) ? null :
+    //   new https.Agent({
+    //     ca: Buffer.from(certifcate, 'utf-8')
+    //   });
     this.baseConfig = {
       baseURL: baseRequestConfig?.baseUrl,
-      headers,
+      headers: baseRequestConfig?.headers ?? {},
       timeout: baseRequestConfig?.timeout ?? 10000,
     };
     this.instance = axios.create(this.baseConfig);
   }
 
-  private async sendRequest(
+  public async sendRequest(
     instance: AxiosInstance,
     request: AxiosRequestConfig,
   ): Promise<AxiosResponse> {
@@ -63,7 +73,7 @@ export default abstract class HttpClient {
   public async get<T>(url: string, headers?: Header): Promise<HttpResponse<T>> {
     const request: AxiosRequestConfig = {
       url,
-      method: 'get',
+      method: 'get'
     };
     this.updateRequestHeaders(request, headers);
     const response = await this.sendRequest(this.instance, request);
@@ -81,7 +91,7 @@ export default abstract class HttpClient {
    * @returns return HttpRespose
    */
   public async post<T>(
-    url: string,
+    url?: string,
     data?: any,
     headers?: Header,
   ): Promise<HttpResponse<T>> {
@@ -170,3 +180,4 @@ export default abstract class HttpClient {
     };
   }
 }
+

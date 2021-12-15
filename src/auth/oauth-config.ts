@@ -1,4 +1,4 @@
-import Authentication from '../types/authentication';
+import AuthenticationType from '../types/authentication-type';
 import AuthConfig from './auth-config';
 
 /**
@@ -20,18 +20,22 @@ export default class OAuthConfig extends AuthConfig {
 
   audience: string;
 
-  scope: string[] | null | undefined;
+  scope?: string[];
+
+  certificate?: string;
 
   constructor(
     tokenUrl: string,
     clientId: string,
     clientSecret: string,
     audience: string,
-    scope?: string[] | null | undefined,
+    scope?: string[],
+    certificate?: string,
   ) {
-    super(Authentication.OAuth, clientId, clientSecret);
+    super(AuthenticationType.OAuth, clientId, clientSecret);
     this.tokenUrl = tokenUrl;
     this.audience = audience;
     this.scope = scope;
+    this.certificate = certificate;
   }
 }
