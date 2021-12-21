@@ -1,16 +1,6 @@
 {
   "entryPoints": [
-    "./src/http-client-factory.ts",
-    "./src/types/http-error-codes.ts",
-    "./src/exceptions/invalid-basic-auth-config.ts",
-    "./src/exceptions/invalid-oauth-config.ts",
-    "./src/auth/basic-auth-config.ts",
-    "./src/auth/oauth-config.ts",
-    "./src/http-clients/basic-http-client.ts",
-    "./src/http-clients/basic-auth-http-client.ts",
-    "./src/http-clients/oauth-http-client.ts",
-    "./src/models/header.ts",
-    "./src/models/http-response.ts"
+    "./src/index.ts"
   ],
   "out": "doc"
 }

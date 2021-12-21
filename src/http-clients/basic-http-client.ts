@@ -4,6 +4,7 @@ import HttpClient from './http-client';
 
 /**
  * This is a basic httpclient
+ * @public
  */
 export default class BasicHttpClient extends HttpClient {
   constructor(httpConfig?: HttpConfiguration, axiosConfig?: AxiosRequestConfig) {

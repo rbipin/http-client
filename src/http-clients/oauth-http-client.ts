@@ -7,7 +7,10 @@ import { HttpConfiguration } from '../models/http-client-config';
 import OAuthTokenException from '../exceptions/oauth-token-exception';
 
 /**
- * This is an OAuth HttpClient, based on the credentials passed as OAuthConfig this will request for a bearer token and send that with each request
+ * This is an OAuth HttpClient, based on the credentials passed as OAuthConfig 
+ * this will request for a bearer token and send that with each request.
+ * Also the bearer token is cached/ saved and reused till it expires
+ * @public
  */
 export default class OAuthHttpClient extends HttpClient {
   constructor(httpConfig: HttpConfiguration) {

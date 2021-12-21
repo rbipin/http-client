@@ -7,11 +7,13 @@ import axios, {
 import { Header } from '../models/header';
 import { HttpConfiguration } from '../models/http-client-config';
 import { HttpResponse } from '../models/http-response';
+import HttpMethod from '../types/http-methods';
 // import * as https from 'https';
 import { isNullOrEmpty } from '../common/utilities';
 
 /**
  * Abstract class for HttpClient
+ * @hidden
  */
 export default abstract class HttpClient {
   instance: AxiosInstance;
@@ -36,14 +38,14 @@ export default abstract class HttpClient {
     this.instance = axios.create(this.baseConfig);
   }
 
-  public async sendRequest(
+  private async sendRequest(
     instance: AxiosInstance,
     request: AxiosRequestConfig,
   ): Promise<AxiosResponse> {
     try {
       return instance.request(request);
     } catch (e) {
-      throw new Error('Some error in send request');
+      throw new Error(`Unable to process the request, ${e}`);
     }
   }
 
@@ -73,7 +75,7 @@ export default abstract class HttpClient {
   public async get<T>(url: string, headers?: Header): Promise<HttpResponse<T>> {
     const request: AxiosRequestConfig = {
       url,
-      method: 'get'
+      method: HttpMethod.GET
     };
     this.updateRequestHeaders(request, headers);
     const response = await this.sendRequest(this.instance, request);
@@ -96,7 +98,7 @@ export default abstract class HttpClient {
     headers?: Header,
   ): Promise<HttpResponse<T>> {
     const request: AxiosRequestConfig = {
-      method: 'post',
+      method: HttpMethod.POST,
       url,
       data,
     };
@@ -122,7 +124,7 @@ export default abstract class HttpClient {
   ): Promise<HttpResponse<T>> {
     const request: AxiosRequestConfig = {
       url,
-      method: 'put',
+      method: HttpMethod.PUT,
       data,
     };
     this.updateRequestHeaders(request, headers);
@@ -147,7 +149,7 @@ export default abstract class HttpClient {
   ): Promise<HttpResponse<T>> {
     const request: AxiosRequestConfig = {
       url,
-      method: 'patch',
+      method: HttpMethod.PATCH,
       data,
     };
     this.updateRequestHeaders(request, headers);
@@ -170,7 +172,7 @@ export default abstract class HttpClient {
   ): Promise<HttpResponse<T>> {
     const request: AxiosRequestConfig = {
       url,
-      method: 'delete',
+      method: HttpMethod.DELETE,
     };
     this.updateRequestHeaders(request, headers);
     const response = await this.sendRequest(this.instance, request);
