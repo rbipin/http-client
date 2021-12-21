@@ -9,8 +9,17 @@ import {
   HttpStatusCode,
   OAuthConfig,
 } from '../index';
+import mockServer from './mock-server/mock-server-main';
+const server = new mockServer();
 
 describe('Get - Data', () => {
+  // beforeAll(() => {
+  //   server.startServer();
+  // });
+
+  // afterAll(()=> {
+  //   server.stopServer();
+  // });
   interface Data {
     id: number;
     title: string;
@@ -21,7 +30,7 @@ describe('Get - Data', () => {
    */
   it('Get-data', async () => {
     const httpConfig: HttpConfiguration = {
-      baseUrl: 'http://localhost:3000',
+      baseUrl: 'http://localhost:8980',
       authConfig: null,
       headers: null,
       timeout: null,

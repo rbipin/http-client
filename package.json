@@ -27,9 +27,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "jest": {
-    "testEnvironment": "node"
-  },
   "author": "Bipin Radhakrishnan",
   "license": "ISC",
   "dependencies": {
