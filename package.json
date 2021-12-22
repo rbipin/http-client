@@ -1,5 +1,5 @@
 {
-  "name": "@rbipin/httpclient",
+  "name": "@rbipin/http-client",
   "repository": {
     "type": "github",
     "url": "https://github.com/rbipin/http-client"
@@ -10,8 +10,8 @@
     "axios",
     "oauth"
   ],
-  "version": "1.0.4",
-  "description": "A simple wrapper around axio http client",
+  "version": "1.0.0",
+  "description": "A simple wrapper around axio http client with auth token management",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [

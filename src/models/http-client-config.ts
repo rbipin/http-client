@@ -9,10 +9,14 @@ export interface HttpConfiguration {
   baseUrl?: string;
   /** headers */
   headers?: Header;
-  /** Authentication configuration, BasicAuth, OAuthConfig */
+  /** Authentication configuration, 
+   * BasicAuth [[BasicAuthConfig]], OAuthConfig [[OAuthConfig]]
+   */
   authConfig?: AuthConfig;
   /** timeout (in ms), default is 10000 */
   timeout?: number;
-  /** Certificate */
+  /** 
+   * Https certificate in string format
+   */
   certificate?: string;
 }
